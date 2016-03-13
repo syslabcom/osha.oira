@@ -10,22 +10,29 @@ TARGETS		= $(MO_FILES)
 
 all: ${TARGETS}
 
-clean:
+clean::
 	-rm ${TARGETS}
 
 buildout: bootstrap.py
 	$(PYTHON) bootstrap.py
 	./bin/buildout -c devel.cfg
 
-bin/test bin/pybabel: buildout devel.cfg setup.py
+bin/test bin/pybabel bin/sphinx-build: buildout devel.cfg setup.py
 	touch bin/test
 	touch bin/pybabel
+	touch bin/sphinx-build
 
 check:: bin/test $(MO_FILES)
 	bin/test
 
 jenkins: bin/test $(MO_FILES)
 	bin/test --xml -s osha.oira
+
+docs:: bin/sphinx-build
+	make -C docs html
+
+clean::
+	rm -rf docs/.build
 
 pot: bin/pybabel
 	bin/pybabel extract -F babel.cfg \

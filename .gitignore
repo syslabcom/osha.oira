@@ -19,6 +19,7 @@
 *.pt.py
 _site
 scripts/lib
+/docs/.build/
 scripts/bin
 scripts/include
 prototype/.sass-cache

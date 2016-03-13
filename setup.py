@@ -53,6 +53,9 @@ setup(name='osha.oira',
       ],
       tests_require=tests_require,
       extras_require={
+          "sphinx": ["Sphinx >=1.0",
+                     "repoze.sphinx.autointerface",
+                     ],
           "tests": tests_require + ['plone.app.testing'],
       },
       entry_points="""
