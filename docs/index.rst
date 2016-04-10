@@ -27,7 +27,7 @@ Introduction
 ============
 
 The OiRA risk assessment tool is based on hierarchical questionnaires. A
-questionnaire (or OIRA tool) covers all possible risks for a specific sector of
+questionnaire (referred to as OIRA tool) covers most of the possible risks for a specific sector of
 industry.
 
 Each sector organisation can have one or more OiRA tools published simultaneously.
