@@ -19,7 +19,7 @@
 
     <!-- Identification -->
     <fieldset class="vertical" id="${view/risk_number}">
-        <tal:normal_question condition="not: risk/always_present">
+        <tal:normal_question condition="python: not getattr(risk, 'always_present', False) or risk.type!='risk'">
             <fieldset class="pat-checklist radio">
             <legend tal:content="risk/title">The temperature of all fridges is checked daily</legend>
             <input type="hidden" name="answer:default" value="postponed"/>
@@ -28,7 +28,7 @@
             <label tal:condition="risk/show_notapplicable" class="not-applicable"><input type="radio" name="answer" value="n/a" checked="${python:'checked' if context.identification=='n/a' else None}"/><tal:span i18n:translate="label_not_applicable">Not applicable</tal:span></label>
             </fieldset>
         </tal:normal_question>
-        <tal:always_present condition="risk/always_present">
+        <tal:always_present condition="python:getattr(risk, 'always_present', False) and risk.type=='risk'">
             <input type="hidden" name="answer" value="no" />
             <legend tal:content="risk/title">The temperature of all fridges is checked daily</legend>
             <p i18n:translate="description_risk_always_present">This risk was automatically set as being present. You cannot change this.</p>
